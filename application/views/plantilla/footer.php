@@ -51,6 +51,8 @@
    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
    <script src="<?php echo base_url();?>assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
    <script src="<?php echo base_url();?>assets/js/lottie.js" type="text/javascript"></script>
+   <script src="<?php echo base_url();?>assets/js/dropzone.js" type="text/javascript"></script>
+
   <script>
   function CrearLottie(element, archivo)
   {
@@ -68,6 +70,7 @@
     
   }
   $(document).ready(function() {
+    
     $('#aregistro').click(function(){
       Mover_Bici_menu(2500,"910px","<?php echo base_url('Pagina_Principal/Registro#registrarse');?>");
     });

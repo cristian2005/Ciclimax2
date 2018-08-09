@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="<?php echo base_url();?>assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
+  <link href="<?php echo base_url();?>assets/css/dropzone.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?php echo base_url();?>assets/demo/demo.css" rel="stylesheet" />
 
@@ -47,10 +48,10 @@
             </a>
             <div class="dropdown-menu dropdown-with-icons">
               <a href="./index.html" class="dropdown-item">
-                <i class="material-icons">layers</i> All Components
+                <i class="material-icons">motorcycle</i> Bicicletas
               </a>
               <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Documentation
+                <i class="material-icons">build</i>Accesorios
               </a>
             </div>
           </li>
@@ -61,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="" target="_blank" data-original-title="Ver las noticias">
+            <a class="nav-link" rel="tooltip" href="<?php echo base_url('Menu/Noticias');?>" title="" data-placement="bottom" href=""  data-original-title="Ver las noticias">
               Noticias
             </a>
           </li>
@@ -90,7 +91,7 @@
             <?php if(isset($_SESSION["Apodo"])){?>
             <div class="dropdown-menu dropdown-with-icons">
               <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                <i class="material-icons">build</i> Configuraci&oacute;n
+                <i class="material-icons">settings</i> Configuraci&oacute;n
               </a>
               <a href="<?php echo base_url('Pagina_Principal/Cerrar_Sesion');?>" class="dropdown-item">
                 <i class="material-icons">lock</i> Cerrar sesi&oacute;n
