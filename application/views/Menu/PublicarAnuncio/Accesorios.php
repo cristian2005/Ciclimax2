@@ -1,4 +1,4 @@
-<div id="accesorios">
+<div id="accesorio">
 <form id="accesorios" action="<?php echo base_url('Pagina_Principal/Publicar_Anuncio');?>" method="post"><div class="row">
 <div class="col-4">
 <div class="form-group">

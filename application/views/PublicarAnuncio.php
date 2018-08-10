@@ -140,6 +140,7 @@ function Siguiente()
          },
          success:function(resp)
          {
+           
           setTimeout('terminaranimacion()',3000);
          },
          error:function()

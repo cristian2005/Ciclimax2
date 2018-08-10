@@ -8,51 +8,58 @@
     <div class="container">
 <div class="container gallery-container">
   <div class="box-group">
-  <h3 class="">Titulo</h3><button style="position:abosulte; top:-40px;" class="btn pull-right btn-info btn-sm">$20,000</button>
+  <h3 class=""><?php echo $anuncios->Titulo;?></h3><button style="position:abosulte; top:-40px;" class="btn pull-right btn-info btn-sm">$ <?php echo $anuncios->Precio;?></button>
   </div>
     <div class="tz-gallery">
         <div class="row mb-3">
             <div class="col-md-4">
                 <div class="card">
-                    <a class="lightbox" href="https://assets1.ignimgs.com/2018/07/18/goku-1531912434329_1280w.jpg">
-                    <img src="https://assets1.ignimgs.com/2018/07/18/goku-1531912434329_1280w.jpg" alt="Park" class="card-img-top">
+                <?php 
+                foreach ($imagenes as  $value) {
+                    if($value->Id_anuncio==$anuncios->idanuncios)
+                    {
+              $image= substr($value->Url,strrpos($value->Url,"/"));
+                ?>
+                    <a class="lightbox" href="<?php echo base_url('assets/img/img_anuncios'.$image);?>">
+                    <img height="200"  src="<?php echo base_url('assets/img/img_anuncios'.$image);?>" alt="Park" class="card-img-top">
                     </a>
                     <div class="row">
+                    <?php break;}}?>
+                    <?php
+                    $mostrar_primera=true;
+                    for ($i=0; $i <count($imagenes) ; $i++) { 
+                        if($imagenes[$i]->Id_anuncio==$anuncios->idanuncios)
+                        {
+                       $image= substr($imagenes[$i]->Url,strrpos($imagenes[$i]->Url,"/"));
+                       if(!$mostrar_primera){
+                    ?>
+                    
                     <div class="col-4">
-                    <a class="lightbox" href="https://assets1.ignimgs.com/2018/07/18/goku-1531912434329_1280w.jpg">
-                    <img src="https://assets1.ignimgs.com/2018/07/18/goku-1531912434329_1280w.jpg" alt="Park" class="card-img-top">
+                    <a class="lightbox" href="<?php echo base_url('assets/img/img_anuncios'.$image);?>">
+                    <img src="<?php echo base_url('assets/img/img_anuncios'.$image);?>" alt="Park" class="card-img-top">
                     </a>
                     </div>
-                    <div class="col-4">
-                    <a class="lightbox" href="https://assets1.ignimgs.com/2018/07/18/goku-1531912434329_1280w.jpg">
-                    <img src="https://assets1.ignimgs.com/2018/07/18/goku-1531912434329_1280w.jpg" alt="Park" class="card-img-top">
-                    </a>
-                    </div>
-                    <div class="col-4">
-                    <a class="lightbox" href="https://assets1.ignimgs.com/2018/07/18/goku-1531912434329_1280w.jpg">
-                    <img src="https://assets1.ignimgs.com/2018/07/18/goku-1531912434329_1280w.jpg" alt="Park" class="card-img-top">
-                    </a>
-                    </div>
+                        <?php }$mostrar_primera=false;}}?>
                     </div>
                 </div>
             </div>
             <div class="col-8">
             <div style="padding:20px;" class="card">
-            <strong>Tel/cel.:</strong><span></span>
-            <strong>Marca:</strong><span></span>
-            <strong>Modelo:</strong><span></span>
-            <strong>Precio:</strong><span></span>
-            <strong>Accesorios:</strong><span></span>
-            <strong>Tama&ntilde;o de aro:</strong><span></span>
-            <strong>Tipo:</strong><span></span>
-            <strong>Fecha emisi&oacute;n:</strong><span></span>
-            <strong>Fecha de vencimiento:</strong><span></span>
+            <span> <strong>Tel/cel.: </strong><?php echo $anuncios->Telefono;?></span>
+            <span> <strong>Marca: </strong><?php echo $anuncios->Marca;?></span>
+            <span> <strong>Modelo: </strong><?php echo $anuncios->Modelo;?></span>
+            <span> <strong>Precio: </strong><?php echo $anuncios->Precio;?></span>
+            <span> <strong>Accesorios: </strong><?php echo $anuncios->Accesorio;?></span>
+            <span> <strong>Tama&ntilde;o de aro: </strong><?php echo $anuncios->aro;?></span>
+            <span> <strong>Tipo: </strong><?php echo $anuncios->Tipo;?></span>
+            <span><strong>Fecha emisi&oacute;n: </strong><?php echo $anuncios->Fecha_emision;?></span>
+            <span><strong>Fecha de vencimiento: </strong><?php echo $anuncios->Fecha_vencimiento;?></span>
             </div>
             </div>
             </div>
             <div class="row">
-               <strong>Descripci&oacute;n</strong>
-               <span>Vendo bicicleta de ruta transformada a urbana. Superligera. Cuadro de aluminio tamaño 56. Espiga de carbono. Aros Mavic con gomas Michelin Lithion 700 x 25. Cangrejos Campagnolo y Shimano 105. Desviador delantero y trasero Shimano Sora. Buena condición. (Nota: Doy la opción de convertirla nuevamente a ruta reinstalando timon y manetas de ruta, piezas gratis pero mano de obra a cuenta del comprador).</span>
+               <strong>Descripci&oacute;n </strong>
+               <span> <?php echo $anuncios->Descripcion;?> </span>
             </div>
         </div>
     </div>
@@ -65,8 +72,8 @@
 	<div class="icon icon-primary">
 		<i class="material-icons">person</i>
 	</div>
-	<h4 class="info-title">Cristian</h4>
-	<p>Cristian se hizo miembro a ciclimax el 20/05/1998</p>
+	<h4 class="info-title"><?php echo $anuncios->Apodo;?></h4>
+	<p>Cristian se hizo miembro a ciclimax el <?php echo date("d/m/Y",strtotime($anuncios->Fecha_registro))?></p>
 </div>
     </div>
    

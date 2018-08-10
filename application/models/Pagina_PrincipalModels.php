@@ -60,7 +60,7 @@ public function Obtener_Sub_categoria($id)
 }
 public function Obtener_Anuncio()
 {
-    $resultado=$this->db->select('anuncios.*,usuarios.Apodo, subcategorias.Nombre_subcategoria')->from('anuncios')
+    $resultado=$this->db->select('anuncios.*,usuarios.Apodo,usuarios.Fecha_registro,subcategorias.Nombre_subcategoria')->from('anuncios')
     ->join('subcategorias',' anuncios.Id_subcategoria= subcategorias.idsubcategorias')->
     join('usuarios',"anuncios.Id_usuario=usuarios.idusuarios")->limit(10)
     ->get()->result_object();

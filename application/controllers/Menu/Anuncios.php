@@ -15,9 +15,17 @@ public function __construct()
 }
     public function VerAnuncio($idanuncios)
     {
-		$anuncio=$this->Pagina_PrincipalModels->Obtener_Anuncio();
+		$temp=$this->Pagina_PrincipalModels->Obtener_Anuncio();
+		$anuncio=null;
+		for ($i=0; $i < count($temp["Anuncios"]); $i++) { 
+			if($temp["Anuncios"][$i]->idanuncios==$idanuncios)
+			{
+				$anuncio=$temp["Anuncios"][$i];
+			}
+		}
+		$imagenes=$this->Pagina_PrincipalModels->Obtener_imagen();
         $this->load->view('plantilla/header');
-		$this->load->view('Menu/Anuncios/Ver_Anuncios',array("anuncios"=>$anuncio));
+		$this->load->view('Menu/Anuncios/Ver_Anuncios',array("anuncios"=>$anuncio,"imagenes"=>$imagenes));
 		$this->load->view('plantilla/footer');
     }
 

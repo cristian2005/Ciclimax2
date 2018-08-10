@@ -48,6 +48,8 @@ class Pagina_Principal extends CI_Controller {
 	{
 		if($_POST)
 		{
+			print_r($_POST);
+			exit();
 			$this->Pagina_PrincipalModels->InsertarAnuncios();
 			exit();
 		}

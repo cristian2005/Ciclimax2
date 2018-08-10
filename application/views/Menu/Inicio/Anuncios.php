@@ -65,7 +65,7 @@
             <p><?php echo $value->Descripcion?></p>
           </div>
           </div>
-          <a href="<?php echo base_url('Menu/Anuncios/VerAnuncio/2');?>" class="btn btn-primary btn-sm pull-right">Ver</a>
+          <a href="<?php echo base_url('Menu/Anuncios/VerAnuncio/'.$value->idanuncios);?>" class="btn btn-primary btn-sm pull-right">Ver</a>
           </div>
       </div>
   </div>
