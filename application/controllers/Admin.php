@@ -31,11 +31,17 @@ class Admin extends CI_Controller {
         $this->load->view("admin/footer");
     }
 
-        function usuarios() {
+        function usuarios($id = null) {
         $this->load->view("admin/header");
         $contenedor['pagina_actual'] = "Usuarios";
         $this->load->view("admin/menu", $contenedor);
+        $this->load->model('AdminModel');
+        if ($id<>null) {
+        	$this->AdminModel->Admin($id);
+        }
+        $contenedor['usuarios'] = $this->AdminModel->Obtener_usu();
 
+        $this->load->view("admin/usuarios",$contenedor);
         $this->load->view("admin/footer");
     }
 
