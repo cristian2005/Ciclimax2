@@ -52,13 +52,13 @@ public function InsertarAnuncios()
     $idusuario=$_SESSION["idusuarios"];
     $fecha_vencimien=date("Y-m-d H:i",strtotime("+ 45 days",time()));
     $this->db->insert('anuncios',array_merge($_POST,array("Id_usuario"=>$idusuario,"Fecha_vencimiento"=>$fecha_vencimien)));
-/*
+
     $id = $this->db->insert_id();
     $tareas=json_decode(file_get_contents(mdate('%Y-%m-%d', now()+86400).".json"), true);
     $tareas[$id] = mdate('%Y-%m-%d', now()+(45 * 24 * 60 * 60));
      $datos = json_encode($tareas);
      file_put_contents(mdate('%Y-%m-%d', now()+86400).".json", $datos); 
-*/
+
 }
 public function Obtener_Sub_categoria($id)
 {
@@ -83,7 +83,7 @@ public function Eliminar_anuncio($id)
    $this->db->where('idanuncios', $id);
    $this->db->delete('anuncios');
 }
-/*
+
 public function Middleware($task=null)
 {
   if ($task=="vencimiento") {
@@ -111,7 +111,7 @@ public function Middleware($task=null)
   }
   
 }
-*/
+
 
 public function Obtener_Anuncio_porcategoria()
 {

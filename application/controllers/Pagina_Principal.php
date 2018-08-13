@@ -11,7 +11,7 @@ class Pagina_Principal extends CI_Controller {
 		   session_start();
 		}
 		$this->load->model('Pagina_PrincipalModels');
-		//$this->Pagina_PrincipalModels->Middleware('vencimiento');
+		$this->Pagina_PrincipalModels->Middleware('vencimiento');
 	}
 		
 	public function index()
