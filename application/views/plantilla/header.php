@@ -47,11 +47,11 @@
               Categor&iacute;a
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="./index.html" class="dropdown-item">
-                <i class="material-icons">motorcycle</i> Bicicletas
+              <a href="<?php echo base_url('Menu/Categoria/Bicicleta');?>" class="dropdown-item">
+                <i class="material-icons">motorcycle</i> Bicicletas(<?php echo(isset($Num_categoria_anuncios[0]->Num_categorias))? $Num_categoria_anuncios[0]->Num_categorias:0?>)
               </a>
-              <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                <i class="material-icons">build</i>Accesorios
+              <a href="<?php echo base_url('Menu/Categoria/Accesorios');?>" class="dropdown-item">
+                <i class="material-icons">build</i>Accesorios(<?php echo(isset($Num_categoria_anuncios[1]->Num_categorias))? $Num_categoria_anuncios[1]->Num_categorias:0?>)
               </a>
             </div>
           </li>
@@ -67,7 +67,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="" target="_blank" data-original-title="Crear un nuevo evento">
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="<?php echo base_url('Menu/Eventos');?>" data-original-title="Crear un nuevo evento">
               Eventos
             </a>
           </li>

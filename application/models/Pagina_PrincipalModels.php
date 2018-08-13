@@ -64,11 +64,11 @@ public function Obtener_Sub_categoria($id)
 {
     return $this->db->where("id_categorias",$id)->get('subcategorias')->result_object();
 }
-public function Obtener_Anuncio()
+public function Obtener_Anuncio($filtro="")
 {
     $resultado=$this->db->select('anuncios.*,usuarios.Apodo,usuarios.Fecha_registro,subcategorias.Nombre_subcategoria')->from('anuncios')
     ->join('subcategorias',' anuncios.Id_subcategoria= subcategorias.idsubcategorias')->
-    join('usuarios',"anuncios.Id_usuario=usuarios.idusuarios")->limit(10)
+    join('usuarios',"anuncios.Id_usuario=usuarios.idusuarios")->like('Titulo',$filtro)->limit(10)
     ->get()->result_object();
     $imagen=$this->Obtener_imagen();
     return array("Anuncios"=>$resultado,"Imagenes"=>$imagen);
@@ -77,6 +77,7 @@ public function Obtener_imagen()
 {
     return $this->db->select('Url,Id_anuncio')->get('imagen')->result_object();
 }
+
 public function Eliminar_anuncio($id)
 {
    $this->db->where('idanuncios', $id);
@@ -111,5 +112,12 @@ public function Middleware($task=null)
   
 }
 */
+
+public function Obtener_Anuncio_porcategoria()
+{
+ return $this->db->select('count(id_categoria) as Num_categorias')->group_by('id_categoria')->order_by('id_categoria')->
+ get('anuncios')->result_object();
+}
+
 }
 

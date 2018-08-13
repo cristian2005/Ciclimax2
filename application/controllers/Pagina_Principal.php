@@ -13,12 +13,22 @@ class Pagina_Principal extends CI_Controller {
 		$this->load->model('Pagina_PrincipalModels');
 		//$this->Pagina_PrincipalModels->Middleware('vencimiento');
 	}
-	
+		
 	public function index()
 	{
-		$anuncio=$this->Pagina_PrincipalModels->Obtener_Anuncio();		
-		$this->load->view('plantilla/header');
+
+		if($_GET)
+		{
+		 $anun=$this->Pagina_PrincipalModels->Obtener_Anuncio($_GET['buscador']);
+		echo $html= $this->load->view('Menu/Inicio/Obtener_anuncios',array("anuncios"=>$anun),true);
+		exit();
+		}
+		$num_anuncio_ca=$this->Pagina_PrincipalModels->Obtener_Anuncio_porcategoria();
+		$anuncio=$this->Pagina_PrincipalModels->Obtener_Anuncio();
+		$this->load->view('plantilla/header',array("Num_categoria_anuncios"=>$num_anuncio_ca));
+
 		$this->load->view('Pagina_Principal',array("anuncios"=>$anuncio));
+		$this->load->view('plantilla/cargando',array("cargando"=>"Buscando anuncio..."));
 		$this->load->view('plantilla/paginacion');
 		$this->load->view('plantilla/footer');
 		
@@ -31,12 +41,13 @@ class Pagina_Principal extends CI_Controller {
 	}
 	public function Registro()
 	{
+		$num_anuncio_ca=$this->Pagina_PrincipalModels->Obtener_Anuncio_porcategoria();
 		if(isset($_POST["Correo"]))
 		{
 			$this->Pagina_PrincipalModels->Registro();
 			exit();
 		}
-		$this->load->view('plantilla/header');
+		$this->load->view('plantilla/header',array("Num_categoria_anuncios"=>$num_anuncio_ca));
 		$this->load->view('registro');
 		$this->load->view('plantilla/footer');
 	}
@@ -50,7 +61,6 @@ class Pagina_Principal extends CI_Controller {
 		if($_POST)
 		{
 			print_r($_POST);
-			exit();
 			$this->Pagina_PrincipalModels->InsertarAnuncios();
 			exit();
 		}
@@ -60,8 +70,8 @@ class Pagina_Principal extends CI_Controller {
 			echo json_encode($subca);
 			exit();
 		}
-		
-		$this->load->view('plantilla/header');
+		$num_anuncio_ca=$this->Pagina_PrincipalModels->Obtener_Anuncio_porcategoria();
+		$this->load->view('plantilla/header',array("Num_categoria_anuncios"=>$num_anuncio_ca));
 		$this->load->view('PublicarAnuncio');
 		$this->load->view('plantilla/cargando',array("cargando"=>"Publicando anuncio..."));
 		$this->load->view('plantilla/footer');
