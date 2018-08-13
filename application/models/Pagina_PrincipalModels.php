@@ -12,7 +12,6 @@ public function IniciarSesion($correo,$clave)
    //Datos correcto
    if($resutado!=null)
    {
-    session_start();
     $_SESSION['idusuarios']=$resutado[0]->idusuarios;
     $_SESSION['Apodo']=$resutado[0]->Apodo;
     $_SESSION['Clave']=$resutado[0]->Clave;
@@ -53,6 +52,13 @@ public function InsertarAnuncios()
     $idusuario=$_SESSION["idusuarios"];
     $fecha_vencimien=date("Y-m-d H:i",strtotime("+ 45 days",time()));
     $this->db->insert('anuncios',array_merge($_POST,array("Id_usuario"=>$idusuario,"Fecha_vencimiento"=>$fecha_vencimien)));
+/*
+    $id = $this->db->insert_id();
+    $tareas=json_decode(file_get_contents(mdate('%Y-%m-%d', now()+86400).".json"), true);
+    $tareas[$id] = mdate('%Y-%m-%d', now()+(45 * 24 * 60 * 60));
+     $datos = json_encode($tareas);
+     file_put_contents(mdate('%Y-%m-%d', now()+86400).".json", $datos); 
+*/
 }
 public function Obtener_Sub_categoria($id)
 {
@@ -71,6 +77,39 @@ public function Obtener_imagen()
 {
     return $this->db->select('Url,Id_anuncio')->get('imagen')->result_object();
 }
+public function Eliminar_anuncio($id)
+{
+   $this->db->where('idanuncios', $id);
+   $this->db->delete('anuncios');
+}
+/*
+public function Middleware($task=null)
+{
+  if ($task=="vencimiento") {
+
+      $file = mdate('%Y-%m-%d', now()).".json";
+        if (file_exists($file)) {
+                //analiza si hay un archivo con la fecha actual, sino es porque ya se realizaron las tareas para ese dia
+                //y el nombre del archivo ya cambio a la fecha del dia siguiente
+
+            $tareas=json_decode(file_get_contents($file), true);
+            //error_reporting(E_ERROR | E_PARSE);
+            foreach ($tareas as $key => $value) {
+              if ($value==mdate('%Y-%m-%d', now())) {
+                //aqui se pone la accion a realizar con la tarea antes de eliminarla con el unset
+                   $this->Eliminar_anuncio($key);
+                 unset($tareas[$key]);
+              }              
+            }
+
+                $datos = json_encode($tareas);
+                file_put_contents(mdate('%Y-%m-%d', now()+86400).".json", $datos); 
+                unlink($file);
+        }
+
+  }
+  
+}
+*/
 }
 
-/* End of file ModelName.php */

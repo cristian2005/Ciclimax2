@@ -6,16 +6,17 @@ class Pagina_Principal extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Pagina_PrincipalModels');
 		if(session_status()==PHP_SESSION_NONE)
 		{
-		session_start();
+		   session_start();
 		}
+		$this->load->model('Pagina_PrincipalModels');
+		//$this->Pagina_PrincipalModels->Middleware('vencimiento');
 	}
 	
 	public function index()
 	{
-		$anuncio=$this->Pagina_PrincipalModels->Obtener_Anuncio();
+		$anuncio=$this->Pagina_PrincipalModels->Obtener_Anuncio();		
 		$this->load->view('plantilla/header');
 		$this->load->view('Pagina_Principal',array("anuncios"=>$anuncio));
 		$this->load->view('plantilla/paginacion');
