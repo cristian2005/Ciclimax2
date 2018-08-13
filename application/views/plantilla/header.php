@@ -90,9 +90,13 @@
             </a>
             <?php if(isset($_SESSION["Apodo"])){?>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                <i class="material-icons">settings</i> Configuraci&oacute;n
+
+             <?php if ($_SESSION["Tipo_usuarios"]=="admin"): ?>
+              <a href="<?php echo base_url('Admin');?>" class="dropdown-item">
+                <i class="material-icons">settings</i> Dashboard
               </a>
+             <?php endif ?>
+
               <a href="<?php echo base_url('Pagina_Principal/Cerrar_Sesion');?>" class="dropdown-item">
                 <i class="material-icons">lock</i> Cerrar sesi&oacute;n
               </a>
