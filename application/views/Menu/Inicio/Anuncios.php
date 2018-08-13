@@ -1,4 +1,18 @@
+<div class="row">
+<div class="col-8">
 <h2>Anuncios</h2>
+</div>
+<div class="col-4">
+<div class="input-group">
+    <input type="search" class="form-control" id="buscador" placeholder="Buscar anuncios">
+    <div class="input-group-prepend">
+      <span class="input-group-text" style="cursor:pointer;" onclick="BuscarAnuncios();">
+          <i class="material-icons">search</i>
+      </span>
+    </div>
+  </div>
+  </div>
+  </div>
 <ul class="nav nav-pills nav-pills-icons" role="tablist">
     <!--
         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
@@ -25,52 +39,9 @@
 </ul>
 <div class="tab-content tab-space">
     <div class="tab-pane active" id="dashboard-1">
-    
-      <div class="row">
-      <?php
-      
-      foreach ($anuncios["Anuncios"] as  $value) {
-          
-      ?>
-      <div class="col-md-6">
-      
-      <div class="card">
-          <div class="card-header card-header-text card-header-primary">
-            <div class="card-text">
-              <h4 class="card-title"><?php echo $value->Titulo?></h4>
-            </div>
-          </div>
-          <div class="card-body">
-          
-          <div class="row">
-          <div class="col-md-4">
-          <?php 
-          $image="Imagen";
-          foreach ($anuncios["Imagenes"] as  $value1) {
-              if($value1->Id_anuncio==$value->idanuncios){
-              $image= substr($value1->Url,strrpos($value1->Url,"/"));
-          ?>
-          <img src="<?php echo base_url('assets/img/img_anuncios'.$image);?>" height="100px" width="100px" alt="<?php echo $image;?>">
-          </div>
-          <?php break; }}?>
-          <div class="col-md-8">
-          <i class="material-icons">category</i> <span><?php echo $value->Nombre_subcategoria?></span>
-          <i class="material-icons">person</i> <span><?php echo $value->Apodo?></span>
-          <i class="material-icons">access_time</i> <span><?php echo date("h:i",strtotime($value->Fecha_emision));?></span>
-          <i class="material-icons">attach_money</i> <span><?php echo $value->Precio?></span>
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-12">
-            <p><?php echo $value->Descripcion?></p>
-          </div>
-          </div>
-          <a href="<?php echo base_url('Menu/Anuncios/VerAnuncio/'.$value->idanuncios);?>" class="btn btn-primary btn-sm pull-right">Ver</a>
-          </div>
-      </div>
-  </div>
-      <?php }?>
-      </div>
+    <?php
+    $this->load->view('Menu/Inicio/Obtener_anuncios');
+    ?>
     </div>
     <div class="tab-pane" id="schedule-1">
       Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
@@ -81,3 +52,30 @@
         <br><br>Dynamically innovate resource-leveling customer service for state of the art customer service.
     </div>
 </div>
+<script>
+
+function BuscarAnuncios()
+{
+    $('.bd-example-modal-sm').modal('show');
+    setTimeout('Irajax_buscar()',3000);
+}
+function Irajax_buscar()
+{
+    $.ajax({
+       url:"<?php echo base_url('Pagina_Principal/Index');?>",
+       type:"get",
+       data:{buscador:$('#buscador').val()},
+       beforeSend:function()
+       {
+       $('#titulo').text('Espere un momento por favor...');
+         lottie.setSpeed(5,$('#logoanimado'));
+       },
+       success:function(resp)
+       {
+        lottie.setSpeed(1,$('#logoanimado'));
+        $('.bd-example-modal-sm').modal('hide');
+        $('#dashboard-1').html(resp);
+       }
+   });
+}
+</script>
