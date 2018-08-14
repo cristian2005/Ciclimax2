@@ -9,9 +9,9 @@ class Admin extends CI_Controller {
 
     function index() {
         $this->load->view("admin/header");
-        $contenedor['pagina_actual'] = "Anuncios";
+        $contenedor['pagina_actual'] = "Noticias";
         $this->load->view("admin/menu", $contenedor);
-
+        $this->load->view("admin/noticias");
         $this->load->view("admin/footer");
     }
 
