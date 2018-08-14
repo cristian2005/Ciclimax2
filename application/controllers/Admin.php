@@ -27,7 +27,18 @@ class Admin extends CI_Controller {
         $this->load->view("admin/header");
         $contenedor['pagina_actual'] = "Banners";
         $this->load->view("admin/menu", $contenedor);
+        $this->load->model('AdminModel');
+        
+        if ($_POST) {         
+        	$ruta='./assets/img/img_banners/';
+		    $ruta=$ruta.basename($_FILES['imagen']['name']);
+		    move_uploaded_file($_FILES['imagen']['tmp_name'],$ruta);
+		    $_POST['imagen'] = $_FILES['imagen']['name'];
+        	$this->AdminModel->insertar_post("banners", $_POST);
+        }
 
+        $contenedor['banners'] = $this->AdminModel->obtenerAll('banners');
+        $this->load->view("admin/banners", $contenedor);
         $this->load->view("admin/footer");
     }
 

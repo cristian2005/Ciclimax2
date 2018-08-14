@@ -1,27 +1,32 @@
-<h2>Anuncios destacados</h2>
+<?php $map = directory_map('./assets/img/img_banners/'); $contador = 0; $contador2 = 0;?> 
+<h2>Espacio publicitaria</h2>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <?php foreach ($map as $value): ?>
+      <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $contador2;?>"></li>
+      <?php $contador2++;?>
+    <?php endforeach ?>    
   </ol>
+
   <div class="carousel-inner">
-    <div class="carousel-item active">
-    <img  src="<?php echo base_url('assets/img/bici2.jpg');?>" alt="Second slide">
+
+<?php foreach ($map as $img): ?>
+      <div class="carousel-item <?php echo ($contador == 0) ? "active" : "" ;?>">
+         <img class="d-block w-100" src="<?php echo base_url('assets/img/img_banners/').$img;?>" alt="banner">
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url('assets/img/bici1.jpg');?>" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url('assets/img/bici2.jpg');?>" alt="Third slide">
-    </div>
+    <?php $contador++;?>
+<?php endforeach ?>
+
   </div>
+
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="sr-only">Anterior</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="sr-only">Siguiente</span>
   </a>
+
 </div>
