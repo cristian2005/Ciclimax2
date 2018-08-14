@@ -18,7 +18,11 @@ class Eventos extends CI_Controller {
         $this->load->view('Menu/Eventos/Index',array("Eventos"=>$eventos));
         $this->load->view('plantilla/footer');
     }
-
+    public function Agregar_Eventos()
+    {
+        print_r($_POST);
+        exit();
+    }
 }
 
 /* End of file Eventos.php */

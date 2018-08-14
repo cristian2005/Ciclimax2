@@ -19,7 +19,7 @@ class Admin extends CI_Controller {
         $this->load->view("admin/header");
         $contenedor['pagina_actual'] = "Eventos";
         $this->load->view("admin/menu", $contenedor);
-
+        $this->load->view("admin/eventos");
         $this->load->view("admin/footer");
     }
 
