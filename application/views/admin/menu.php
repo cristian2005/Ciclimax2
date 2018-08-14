@@ -14,7 +14,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
 
-              <li class="nav-item <?php echo ($pagina_actual=='Anuncios')?'active':'';?> ">
+              <li class="nav-item <?php echo ($pagina_actual=='Noticias')?'active':'';?> ">
                 <a class="nav-link" href="<?php echo base_url('admin/');?>">
                   <i class="material-icons">dashboard</i>
                   <p>Noticias</p>

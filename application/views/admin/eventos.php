@@ -4,9 +4,7 @@
    <style>
    #mapid { height: 300px; }
    </style>
-  <!-- CSS Files -->
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="<?php echo base_url();?>assets/demo/demo.css" rel="stylesheet" />
+ 
   <script
   src="https://code.jquery.com/jquery-2.2.0.js"
   integrity="sha256-oYqpLeqZe9cetUDV+TFiBZHp3uJ+X4F5eLs4W6uSTSE="
