@@ -8,6 +8,10 @@ public function __construct()
 {
     parent::__construct();
     $this->load->model('Pagina_PrincipalModels');
+    if(session_status()==PHP_SESSION_NONE)
+		{
+		session_start();
+		}
 }
 
     public function Accesorios()

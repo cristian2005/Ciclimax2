@@ -9,7 +9,7 @@ foreach ($Noticias as $value) {
   <div class="card-body">
     <h4 class="card-title"><?php echo $value->titulo?></h4>
     <p class="card-text"><?php echo $value->descripcion?></p>
-    <p class="card-text"><small class="text-muted">Publicado <?php echo date("d/m/y h:i",strtotime($value->fecha))?></small></p>
+    <p class="card-text"><small class="text-muted">Publicado por <b><?php echo $value->apodo;?></b> el <?php echo date("d/m/y h:i",strtotime($value->fecha))?></small></p>
   </div>
 </div>
 </div>

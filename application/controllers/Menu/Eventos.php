@@ -8,7 +8,11 @@ class Eventos extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Pagina_PrincipalModels');
-		$this->load->model('Menu/EventosModels');
+        $this->load->model('Menu/EventosModels');
+        if(session_status()==PHP_SESSION_NONE)
+		{
+		session_start();
+		}
     }
     public function index()
     {

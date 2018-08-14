@@ -73,7 +73,7 @@
 		<i class="material-icons">person</i>
 	</div>
 	<h4 class="info-title"><?php echo $anuncios->Apodo;?></h4>
-	<p>Cristian se hizo miembro a ciclimax el <?php echo date("d/m/Y",strtotime($anuncios->Fecha_registro))?></p>
+	<p><?php echo $anuncios->Apodo;?> se hizo miembro a ciclimax el <?php echo date("d/m/Y",strtotime($anuncios->Fecha_registro))?></p>
 </div>
     </div>
    

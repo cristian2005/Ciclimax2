@@ -11,7 +11,9 @@ class NoticiasModels extends CI_Model {
     }
     public function Obtener_Noticias()
     {
-        return $this->db->get('noticias')->result_object();
+        return $this->db->select('usuarios.apodo, noticias.*')->from('noticias')
+        ->join('usuarios','noticias.Id_usuarios=usuarios.idusuarios')->get()
+        ->result_object();
     }
 }
 
