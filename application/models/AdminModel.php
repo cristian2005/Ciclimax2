@@ -17,5 +17,16 @@ class AdminModel extends CI_Model {
         $this->db->where('idusuarios', $id);
         $this->db->update('usuarios'); 
     }
+
+    public function insertar_post($tabla, $POST)
+    {
+        return $this->db->insert($tabla, $POST);   
+    }
+
+    public function obtenerAll($tabla)
+    { 
+        return $this->db->select('*')->get($tabla)->result_array();
+    }
+
 }
         
