@@ -20,9 +20,14 @@ class Eventos extends CI_Controller {
     }
     public function Agregar_Eventos()
     {
-        print_r($_POST);
-        exit();
+        if ($_FILES['imagen']['error']==0) {
+            $ruta= './assets/img/img_eventos/'.$_FILES['imagen']["name"];
+            move_uploaded_file($_FILES['imagen']['tmp_name'],$ruta);
+           $this->EventosModels->Registra_Eventos($ruta);
+            exit();
+        }
     }
+  
 }
 
 /* End of file Eventos.php */

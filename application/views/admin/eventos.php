@@ -5,7 +5,6 @@
    #mapid { height: 300px; }
    </style>
   <!-- CSS Files -->
-  <link href="<?php echo base_url();?>assets/css/dropzone.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?php echo base_url();?>assets/demo/demo.css" rel="stylesheet" />
   <script
@@ -15,7 +14,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <link href="<?php echo base_url();?>assets/css/material-kit.min.css" rel="stylesheet" />  
 
-<form action="<?php echo base_url('Eventos/Agregar_Eventos');?>" method="post">
+<form action="<?php echo base_url('Menu/Eventos/Agregar_Eventos');?>" method="post" enctype="multipart/form-data">
   <div class="row">
     <div class="col">
       <input type="text" id="lat" name="lat" class="form-control" readonly placeholder="Latitud">
@@ -56,22 +55,26 @@
   <br>
   
   <!-- input with datetimepicker -->
+  <div class="row">
+  <div class="col">
 <div class="form-group">
-    <label class="label-control">Fecha del evento</label>
-    <input type="text" class="form-control datetimepicker" value="10/05/2016"/>
+   <label class="label-control">Fecha del evento</label>
+    <input type="text" name="fecha" class="form-control datetimepicker" />
+   </div>
+   </div>
+   <div class="col">
+   <input type="file" name="imagen" accept="image/*" />
+   </div>
 </div>
-
+<button type="submit" class="btn btn-primary pull-right">Crear evento</button>
 </form>
+
    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
   
-
 <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
    crossorigin=""></script>
-   
    <script>
-    
-
    //Creando el mapa
    var mymap = L.map('mapid').setView([18.479772,-69.942484], 13);
    	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
