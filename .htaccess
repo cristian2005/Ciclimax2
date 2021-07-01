@@ -1,6 +1,6 @@
 ## Configuracion del mod rewrite para URL amigables
 
- RewriteBase /ciclimax/
+ RewriteBase /ciclimax2/
 
  RewriteEngine On   
 
